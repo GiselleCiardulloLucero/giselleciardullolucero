@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería P - Giselle Ciardullo Lucero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET Y ESTILOS GENERALES ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ===== ENCABEZADO ===== */
+    .header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      color: #1a1714;
+    }
+    .back-link {
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      font-size: clamp(0.7rem, 1vw, 0.9rem);
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
+
+    /* ===== GALERÍA (GRID) ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      background: #ffffff;
+      border: 1px solid #e0dbd2;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f5f3ef;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 23, 20, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border: 2px solid #f2ece1;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: #f2ece1;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Galería P</h1>
+    <a href="index.html" class="back-link">← Volver</a>
+  </header>
+
+  <div class="gallery" id="gallery">
+    <!-- ====== IMÁGENES 1 a 34 (p-1.jpg hasta p-34.jpg) ====== -->
+    <div class="gallery-item"><img src="imagenes/p-01.jpg" alt="Imagen 01" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-02.jpg" alt="Imagen 02" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-03.jpg" alt="Imagen 03" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-04.jpg" alt="Imagen 04" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-05.jpg" alt="Imagen 05" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-06.jpg" alt="Imagen 06" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-07.jpg" alt="Imagen 07" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-08.jpg" alt="Imagen 08" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-09.jpg" alt="Imagen 09" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-10.jpg" alt="Imagen 10" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-11.jpg" alt="Imagen 11" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-12.jpg" alt="Imagen 12" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-13.jpg" alt="Imagen 13" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-14.jpg" alt="Imagen 14" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-15.jpg" alt="Imagen 15" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-16.jpg" alt="Imagen 16" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-17.jpg" alt="Imagen 17" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-18.jpg" alt="Imagen 18" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-19.jpg" alt="Imagen 19" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-20.jpg" alt="Imagen 20" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-21.jpg" alt="Imagen 21" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-22.jpg" alt="Imagen 22" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-23.jpg" alt="Imagen 23" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-24.jpg" alt="Imagen 24" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-25.jpg" alt="Imagen 25" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-26.jpg" alt="Imagen 26" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-27.jpg" alt="Imagen 27" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-28.jpg" alt="Imagen 28" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-29.jpg" alt="Imagen 29" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-30.jpg" alt="Imagen 30" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-31.jpg" alt="Imagen 31" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-32.jpg" alt="Imagen 32" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-33.jpg" alt="Imagen 33" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/p-34.jpg" alt="Imagen 34" loading="lazy" /></div>
+    <!-- ====== FIN DE LAS 34 IMÁGENES ====== -->
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img id="lightboxImg" src="" alt="Vista ampliada" />
+  </div>
+
+  <script>
+    // ===== LIGHTBOX =====
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === this) {
+        lightbox.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
