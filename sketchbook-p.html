@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketchbook P - Giselle Ciardullo Lucero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET Y ESTILOS GENERALES ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ===== ENCABEZADO ===== */
+    .header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      color: #1a1714;
+    }
+    .back-link {
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      font-size: clamp(0.7rem, 1vw, 0.9rem);
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
+
+    /* ===== GALERÍA (GRID) ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      background: #ffffff;
+      border: 1px solid #e0dbd2;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f5f3ef;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 23, 20, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border: 2px solid #f2ece1;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: #f2ece1;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Sketchbook P</h1>
+    <a href="index.html" class="back-link">← Volver</a>
+  </header>
+
+  <div class="gallery" id="gallery">
+    <!-- =================================================================== -->
+    <!--  AQUÍ VAN TUS IMÁGENES DE SKETCHBOOK                               -->
+    <!--  Ejemplo: imagenes/sketch-p-1.jpg, sketch-p-2.jpg, etc.             -->
+    <!--  Cambia el nombre del archivo si usas otra convención.              -->
+    <!--  Para añadir más, solo copia y pega la línea de abajo               -->
+    <!--  y cambia el número.                                               -->
+    <!-- =================================================================== -->
+
+    <div class="gallery-item"><img src="imagenes/sketch-p-1.jpg" alt="Sketch 1" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-2.jpg" alt="Sketch 2" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-3.jpg" alt="Sketch 3" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-4.jpg" alt="Sketch 4" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-5.jpg" alt="Sketch 5" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-6.jpg" alt="Sketch 6" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-7.jpg" alt="Sketch 7" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-8.jpg" alt="Sketch 8" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-9.jpg" alt="Sketch 9" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-10.jpg" alt="Sketch 10" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-11.jpg" alt="Sketch 11" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p-12.jpg" alt="Sketch 12" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-1.jpg" alt="SketchA 1" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-2.jpg" alt="SketchA 2" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-3.jpg" alt="SketchA 3" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-4.jpg" alt="SketchA 4" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-5.jpg" alt="SketchA 5" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-6.jpg" alt="SketchA 6" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-7.jpg" alt="SketchA 7" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-8.jpg" alt="SketchA 8" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-9.jpg" alt="SketchA 9" loading="lazy" /></div>
+    <div class="gallery-item"><img src="imagenes/sketch-p.a-10.jpg" alt="SketchA 10" loading="lazy" /></div>
+    <!-- 
+      🔽 INSTRUCCIÓN RÁPIDA PARA AÑADIR MÁS:
+      Copia esta línea y pégala justo aquí arriba (dentro del div con id="gallery") 
+      <div class="gallery-item"><img src="imagenes/sketch-p-NUMERO.jpg" alt="Sketch NUMERO" loading="lazy" /></div>
+      Cambia "NUMERO" por el número de tu imagen.
+    -->
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img id="lightboxImg" src="" alt="Vista ampliada" />
+  </div>
+
+  <script>
+    // ===== LIGHTBOX =====
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === this) {
+        lightbox.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
