@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilustración - Giselle Ciardullo Lucero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET Y ESTILOS GENERALES ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      background: #ffffff; /* ← fondo blanco */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ===== ENCABEZADO ===== */
+    .header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header h1 {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+      color: #1a1714;
+    }
+    .back-link {
+      color: #1a1714;
+      text-decoration: none;
+      border: 1px solid #1a1714;
+      padding: 0.4em 1em;
+      font-size: clamp(0.7rem, 1vw, 0.9rem);
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover {
+      background: #1a1714;
+      color: #f2ece1;
+    }
+
+    /* ===== GALERÍA (GRID) ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .gallery-item {
+      background: #ffffff; /* ← fondo blanco para cada tarjeta */
+      border: 1px solid #e0dbd2;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #f5f3ef; /* color de fondo mientras carga */
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 23, 20, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border: 2px solid #f2ece1;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: #f2ece1;
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+    .lightbox-close:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Ilustración </h1>
+    <a href="index.html" class="back-link">← Volver</a>
+  </header>
+
+  <div class="gallery" id="gallery">
+    <!-- Ejemplos con imágenes desde la carpeta "imagenes/" -->
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-01.jpg" alt="Historia de un oso blando 1" />     
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-02.jpg" alt="Historia de un oso blando 2" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-03.jpg" alt="Historia de un oso blando 3" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-04.jpg" alt="Historia de un oso blando 4" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-05.jpg" alt="Historia de un oso blando 5" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/historia.de.un.oso.blando-06.jpg" alt="Historia de un oso blando 6" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/aplastamiento.gotas-01.jpg" alt="Aplastamiento de las Gotas 7" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/comic.miller.Pg-11.jpg" alt="Comic Henry Miller 8" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/comic.miller.Pg-12.jpg" alt="Comic Henry Miller 9" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/comic.miller.Pg-13.jpg" alt="Comic Henry Miller 10" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/comic.mudo-01.jpg" alt="Comic Mudo 11" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/french.revo-01.jpg" alt="French Revolution 12" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/french.revo-02.jpg" alt="French Revolution 13" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-01.jpg" alt="Personajes 14" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-02.jpg" alt="Personajes 15" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-03.jpg" alt="Personajes 16" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-04.jpg" alt="Personajes 17" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-05.jpg" alt="Personajes 18" />
+    </div> 
+    <div class="gallery-item">
+      <img src="imagenes/personajes-06.jpg" alt="Personajes 19" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/personajes-07.jpg" alt="Personajes 20" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/personajes-08.jpg" alt="Personajes 21" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/personajes-09.jpg" alt="Personajes 22" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/personajes-10.jpg" alt="Personajes 23" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/personajes-11.jpg" alt="Personajes 24" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-01.jpg" alt="Señora 25" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-02.jpg" alt="Señora 26" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-03.jpg" alt="Señora 27" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-04.jpg" alt="Señora 28" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-05.jpg" alt="Señora 29" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-06.jpg" alt="Señora 30" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-07.jpg" alt="Señora 31" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-08.jpg" alt="Señora 32" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-09.jpg" alt="Señora 33" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-10.jpg" alt="Señora 34" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-11.jpg" alt="Señora 35" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-12.jpg" alt="Señora 36" />
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/señoraD-13.jpg" alt="Señora 37" />
+    </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img id="lightboxImg" src="" alt="Vista ampliada" />
+  </div>
+
+  <script>
+    // ===== LIGHTBOX =====
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', function (e) {
+        e.stopPropagation();
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === this) {
+        lightbox.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
