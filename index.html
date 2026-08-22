@@ -47,6 +47,8 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   opacity:0;pointer-events:none;
   transition:opacity 1.8s ease;
   background: rgba(242,236,225,0);
+  padding-left:clamp(9rem,26vw,15rem);
+  box-sizing:border-box;
 }
 .index-screen.show{
   opacity:1;pointer-events:auto;
@@ -55,9 +57,12 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
 
 .index-layout{
   display:flex;
+  flex-wrap:wrap;
   align-items:center;
+  justify-content:center;
   gap:clamp(3rem,8vw,7rem);
   padding: 2rem;
+  max-width:100%;
 }
 
 /* Left group: P connected to Sketchbook P */
@@ -83,6 +88,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
 .group-others{
   display:flex;
   flex-direction:column;
+  align-items:flex-start;
   gap:clamp(1rem,2.5vh,1.8rem);
 }
 
@@ -122,12 +128,74 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   opacity:0;
   transition:opacity 1.6s ease .4s;
 }
-.name.show{opacity: 1;} </style>
+.name.show{opacity: 1;}
+
+/* Vertical connector line coming down from the name */
+.social-connector-v{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:calc(clamp(1.2rem,3vh,2rem) + 2.6em);
+  width:1px;
+  height:0;
+  background:#1a1714;
+  z-index:29;
+  opacity:0;
+  transition:height 1.4s ease .8s, opacity .6s ease .8s;
+}
+.social-connector-v.show{
+  opacity:1;
+  height:calc(50vh - clamp(1.2rem,3vh,2rem) - 2.6em);
+}
+
+/* Column of social buttons, starting below center, aligned with name */
+.social-buttons{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:50vh;
+  z-index:30;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1rem,2.5vh,1.8rem);
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity 1.2s ease 1.6s, transform 1.2s ease 1.6s;
+}
+.social-buttons.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Illustration row: button + horizontal connector + extra link */
+.row-ilustracion{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.ilustracion-connector{
+  width: clamp(2rem,5vw,4rem);
+  height:1px;
+  background:#1a1714;
+  flex-shrink:0;
+}
+.btn-video{
+  white-space:nowrap;
+} </style>
 </head>
 <body>
 <div class="bg" id="bg"></div>
 <canvas id="c"></canvas>
 <p class="name" id="name">Giselle Ciardullo Lucero</p>
+
+<!-- Vertical line from the name down to the social buttons -->
+<div class="social-connector-v" id="social-connector-v"></div>
+
+<!-- Social media buttons, stacked, starting below center -->
+<div class="social-buttons" id="social-buttons">
+  <a class="nav-btn" href="https://www.instagram.com/giselleciardullo/" target="_blank" rel="noopener">Instagram</a>
+  <a class="nav-btn" href="https://www.youtube.com/@GiselleCiardulloL/videos" target="_blank" rel="noopener">Youtube</a>
+  <a class="nav-btn" href="https://www.behance.net/giselleamab186" target="_blank" rel="noopener">Behance</a>
+</div>
+
 <div class="index-screen" id="index-screen">
   <div class="index-layout">
 
@@ -141,7 +209,13 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     <!-- Right: 3 independent in column -->
     <div class="group-others">
       <a class="nav-btn" href="obra2.html">Obra2</a>
-      <a class="nav-btn" href="ilustracion.html">Ilustración</a>
+
+      <div class="row-ilustracion">
+        <a class="nav-btn" href="ilustracion.html">Ilustración</a>
+        <div class="ilustracion-connector"></div>
+        <a class="nav-btn btn-video" href="https://youtu.be/1vN2xd69WVY?si=h2ImT3Z01zpGPhif" target="_blank" rel="noopener">aplastamiento de las gotas</a>
+      </div>
+
       <a class="nav-btn" href="sketchbooks.html">Sketchbooks</a>
     </div>
 
@@ -279,6 +353,8 @@ document.getElementById('name').classList.add('show');
 MOTHS_DATA.forEach((_,i) => spawnMoth(i, 600 + i*rand(140,260)));
 setTimeout(() => document.getElementById('bg').classList.add('settle'), 2000);
 setTimeout(() => document.getElementById('index-screen').classList.add('show'), 6800);
+setTimeout(() => document.getElementById('social-connector-v').classList.add('show'), 6800);
+setTimeout(() => document.getElementById('social-buttons').classList.add('show'), 6800);
 </script>
 </body>
 </html>
