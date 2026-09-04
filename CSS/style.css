@@ -1,0 +1,300 @@
+/* =========================================================
+   ESTILOS DEL SITIO
+========================================================= */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow:hidden;background:#d4cfc7;}
+
+.bg{
+  position:fixed;inset:0;
+  background:var(--bgimg) center center / cover no-repeat;
+  z-index:0;
+  transform:scale(1.05);
+  transition:transform 3.2s cubic-bezier(.22,.68,0,1.1);
+}
+.bg.settle{transform:scale(1.0);}
+
+canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
+
+.name{
+  position:fixed;
+  top:clamp(1.2rem,3vh,2rem);
+  left:clamp(1.2rem,3vw,2.2rem);
+  z-index:30;
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(.8rem,1.4vw,1.05rem);  /* mismo tamaño que los botones */
+  letter-spacing:.16em;                   /* mismo espaciado que los botones */
+  color:#1a1714;
+  border:1px solid #1a1714;
+  padding:.55em 1.2em;
+  background:#ffffff;
+  display:inline-block;
+  white-space:nowrap;
+  /* eliminamos opacity y transition */
+}
+/* INDEX SCREEN */
+.index-screen{
+  position:fixed;inset:0;
+  z-index:20;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 1.8s ease;
+  background: rgba(242,236,225,0);
+  padding-left:clamp(9rem,26vw,15rem);
+  box-sizing:border-box;
+}
+.index-screen.show{
+  opacity:1;pointer-events:auto;
+  background: rgba(242,236,225,0);
+}
+
+.index-layout{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(3rem,8vw,7rem);
+  padding: 2rem;
+  max-width:100%;
+}
+
+/* Left group: P connected to Sketchbook P */
+.group-p{
+  display:flex;
+  align-items:center;
+  gap:0;
+  flex-shrink:0;
+}
+.btn-p{
+  white-space:nowrap;
+}
+
+/* Connecting line */
+.connector{
+  width: clamp(2rem,5vw,4rem);
+  height:1px;
+  background:#1a1714;
+  flex-shrink:0;
+}
+
+/* Right column: 3 independent buttons */
+.group-others{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:clamp(1rem,2.5vh,1.8rem);
+}
+
+/* All buttons share this style */
+.nav-btn{
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(.8rem,1.4vw,1.05rem);
+  letter-spacing:.16em;
+  color:#1a1714;
+  text-decoration:none;
+  border:1px solid #1a1714;
+  padding:.55em 1.2em;
+  background:#fff;
+  display:inline-block;
+  white-space:nowrap;
+  transition: background .2s ease, color .2s ease;
+  cursor:pointer;
+}
+.nav-btn:hover{
+  background:#1a1714;
+  color:#f2ece1;
+}
+
+/* Name label top-left stays */
+.name{
+  position:fixed;
+  top:clamp(1.2rem,3vh,2rem);
+  left:clamp(1.2rem,3vw,2.2rem);
+  z-index:30;
+  font-family:'Fraunces',serif;
+  font-weight:300;
+  font-size:clamp(.68rem,1.1vw,.85rem);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#1a1714;
+  opacity:0;
+  transition:opacity 1.6s ease .4s;
+}
+.name.show{opacity: 1;}
+
+/* Vertical connector line coming down from the name */
+.social-connector-v{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:calc(clamp(1.2rem,3vh,2rem) + 2.6em);
+  width:1px;
+  height:0;
+  background:#1a1714;
+  z-index:29;
+  opacity:0;
+  transition:height 1.4s ease .8s, opacity .6s ease .8s;
+}
+.social-connector-v.show{
+  opacity:1;
+  height:calc(50vh - clamp(1.2rem,3vh,2rem) - 2.6em);
+}
+
+/* Column of social buttons, starting below center, aligned with name */
+.social-buttons{
+  position:fixed;
+  left:clamp(1.2rem,3vw,2.2rem);
+  top:50vh;
+  z-index:30;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(1rem,2.5vh,1.8rem);
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity 1.2s ease 1.6s, transform 1.2s ease 1.6s;
+}
+.social-buttons.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Illustration row: button + horizontal connector + extra link */
+.row-ilustracion{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.ilustracion-connector{
+  width: clamp(2rem,5vw,4rem);
+  height:1px;
+  background:#1a1714;
+  flex-shrink:0;
+}
+.btn-video{
+  white-space:nowrap;
+
+/* =========================================================
+   RESPONSIVE: MÓVIL (hasta 768px)
+========================================================= */
+@media (max-width: 768px) {
+  /* Ajustes generales */
+  html, body {
+    overflow-y: auto; /* Permitir scroll vertical */
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .index-screen {
+    padding: 0 1rem;
+    align-items: flex-start;
+    padding-top: 5rem; /* Espacio para el nombre fijo */
+    background: rgba(242, 236, 225, 0.95); /* Fondo suave para legibilidad */
+  }
+
+  .index-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  /* Nombre arriba a la izquierda */
+  .name {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    top: 0.8rem;
+    left: 0.8rem;
+    z-index: 50;
+    white-space: nowrap;
+  }
+
+  /* Grupo P + Sketchbook P */
+  .group-p {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .connector {
+    width: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Columna de botones */
+  .group-others {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  /* Cada botón */
+  .nav-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  /* Fila de Ilustración → conector → aplastamiento... */
+  .row-ilustracion {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ilustracion-connector {
+    width: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Botones sociales: los sacamos de la posición fija y los ponemos en el flujo */
+  .social-buttons {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.8rem !important;
+    margin-top: 1.5rem;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    width: 100%;
+    order: 10; /* Para que aparezcan al final */
+  }
+
+  /* Ocultamos la línea vertical que bajaba desde el nombre */
+  .social-connector-v {
+    display: none !important;
+  }
+
+  /* Ajustamos el canvas y el fondo para que no tapen */
+  .bg, canvas {
+    pointer-events: none;
+  }
+
+  /* Evitamos que el nombre se superponga a los botones */
+  .name {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 4px;
+  }
+
+  /* Si algún botón es muy largo, que no se salga */
+  .nav-btn {
+    max-width: 90vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
