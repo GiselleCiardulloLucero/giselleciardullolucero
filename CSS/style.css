@@ -23,16 +23,16 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   z-index:30;
   font-family:'Fraunces',serif;
   font-weight:300;
-  font-size:clamp(.8rem,1.4vw,1.05rem);  /* mismo tamaño que los botones */
-  letter-spacing:.16em;                   /* mismo espaciado que los botones */
+  font-size:clamp(.8rem,1.4vw,1.05rem);
+  letter-spacing:.16em;
   color:#1a1714;
   border:1px solid #1a1714;
   padding:.55em 1.2em;
   background:#ffffff;
   display:inline-block;
   white-space:nowrap;
-  /* eliminamos opacity y transition */
 }
+
 /* INDEX SCREEN */
 .index-screen{
   position:fixed;inset:0;
@@ -41,7 +41,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   opacity:0;pointer-events:none;
   transition:opacity 1.8s ease;
   background: rgba(242,236,225,0);
-  padding-left:clamp(9rem,26vw,15rem);
+  padding-left:clamp(7rem, 20vw, 12rem); /* Reducido para centrar mejor */
   box-sizing:border-box;
 }
 .index-screen.show{
@@ -49,17 +49,18 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   background: rgba(242,236,225,0);
 }
 
+/* ---- MODIFICADO: los bloques se apilan verticalmente ---- */
 .index-layout{
   display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  gap:clamp(3rem,8vw,7rem);
+  flex-direction: column;    /* Apila P arriba y el resto abajo */
+  align-items: center;       /* Centra horizontalmente */
+  justify-content: center;
+  gap: clamp(3rem, 8vw, 7rem); /* Espacio entre los dos bloques */
   padding: 2rem;
   max-width:100%;
 }
 
-/* Left group: P connected to Sketchbook P */
+/* Grupo P + Sketchbook P (arriba) */
 .group-p{
   display:flex;
   align-items:center;
@@ -70,7 +71,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   white-space:nowrap;
 }
 
-/* Connecting line */
+/* Línea entre P y Sketchbook P */
 .connector{
   width: clamp(2rem,5vw,4rem);
   height:1px;
@@ -78,11 +79,11 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   flex-shrink:0;
 }
 
-/* Right column: 3 independent buttons */
+/* Grupo del resto de galerías (abajo) */
 .group-others{
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
+  align-items:center;    /* Centra los botones dentro del grupo */
   gap:clamp(1rem,2.5vh,1.8rem);
 }
 
@@ -107,7 +108,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   color:#f2ece1;
 }
 
-/* Name label top-left stays */
+/* Name label top-left stays (ya definido arriba, pero se repite) – lo dejamos igual */
 .name{
   position:fixed;
   top:clamp(1.2rem,3vh,2rem);
@@ -173,6 +174,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
 }
 .btn-video{
   white-space:nowrap;
+}
 
 /* =========================================================
    RESPONSIVE: MÓVIL (hasta 768px)
@@ -180,7 +182,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
 @media (max-width: 768px) {
   /* Ajustes generales */
   html, body {
-    overflow-y: auto; /* Permitir scroll vertical */
+    overflow-y: auto;
     height: auto;
     min-height: 100vh;
   }
@@ -188,8 +190,8 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
   .index-screen {
     padding: 0 1rem;
     align-items: flex-start;
-    padding-top: 5rem; /* Espacio para el nombre fijo */
-    background: rgba(242, 236, 225, 0.95); /* Fondo suave para legibilidad */
+    padding-top: 5rem;
+    background: rgba(242, 236, 225, 0.95);
   }
 
   .index-layout {
@@ -271,7 +273,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     transform: none !important;
     transition: none !important;
     width: 100%;
-    order: 10; /* Para que aparezcan al final */
+    order: 10;
   }
 
   /* Ocultamos la línea vertical que bajaba desde el nombre */
