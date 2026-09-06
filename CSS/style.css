@@ -180,7 +180,6 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
    RESPONSIVE: MÓVIL (hasta 768px)
 ========================================================= */
 @media (max-width: 768px) {
-  /* Ajustes generales */
   html, body {
     overflow-y: auto;
     height: auto;
@@ -189,20 +188,19 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
 
   .index-screen {
     padding: 0 1rem;
-    align-items: flex-start;
-    padding-top: 5rem;
+    align-items: flex-start;    /* para que el contenido empiece desde arriba */
+    padding-top: 8rem;          /* AUMENTADO: más espacio para el nombre fijo */
     background: rgba(242, 236, 225, 0.95);
   }
 
   .index-layout {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 3rem;                 /* AUMENTADO: más separación entre los dos bloques */
     padding: 1rem 0;
     width: 100%;
   }
 
-  /* Nombre arriba a la izquierda */
   .name {
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
@@ -212,7 +210,6 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     white-space: nowrap;
   }
 
-  /* Grupo P + Sketchbook P */
   .group-p {
     display: flex;
     flex-wrap: nowrap;
@@ -227,7 +224,6 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     flex-shrink: 0;
   }
 
-  /* Columna de botones */
   .group-others {
     display: flex;
     flex-direction: column;
@@ -236,7 +232,6 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     width: 100%;
   }
 
-  /* Cada botón */
   .nav-btn {
     font-size: 0.85rem;
     padding: 0.4rem 1rem;
@@ -244,7 +239,6 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     display: inline-block;
   }
 
-  /* Fila de Ilustración → conector → aplastamiento... */
   .row-ilustracion {
     display: flex;
     flex-wrap: nowrap;
@@ -259,7 +253,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     flex-shrink: 0;
   }
 
-  /* Botones sociales: los sacamos de la posición fija y los ponemos en el flujo */
+  /* Redes sociales: ahora con más margen superior para separarlas */
   .social-buttons {
     position: relative !important;
     left: auto !important;
@@ -268,7 +262,7 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 0.8rem !important;
-    margin-top: 1.5rem;
+    margin-top: 3.5rem !important;   /* AUMENTADO: más separación del bloque anterior */
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
@@ -276,24 +270,20 @@ canvas{position:fixed;inset:0;z-index:10;pointer-events:none;}
     order: 10;
   }
 
-  /* Ocultamos la línea vertical que bajaba desde el nombre */
   .social-connector-v {
     display: none !important;
   }
 
-  /* Ajustamos el canvas y el fondo para que no tapen */
   .bg, canvas {
     pointer-events: none;
   }
 
-  /* Evitamos que el nombre se superponga a los botones */
   .name {
     position: fixed;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 4px;
   }
 
-  /* Si algún botón es muy largo, que no se salga */
   .nav-btn {
     max-width: 90vw;
     overflow: hidden;
